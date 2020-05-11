@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %} 
+
+{% block content_title %}
+    <br>
+    {{ post.title }}
+{% endblock %} 
+
+{% block content %}
+    <br>
+    <div class="tags">
+        {% for tag in tags %}
+            <a href="{{ url_for('posts.tag_detail', slug=tag.slug) }}">
+                <span class="d-inline-block" data-toggle="popover" data-content="Disabled popover">
+                    <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>{{ tag.name }}</button>
+                </span>
+            </a>
+        {% endfor %}
+    </div>
+    <div class="main-content"> {{ post.body }} </div>
+
+{% endblock %}
